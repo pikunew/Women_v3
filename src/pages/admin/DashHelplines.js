@@ -15,10 +15,10 @@ const DashHelplines = () => {
 
     useEffect(() => {
         dispatch(helplineLoadAction())
-    }, []);
+    }, [dispatch]);
 
 
-    const { helplines, loading } = useSelector(state => state.loadHelplines);
+    const { helplines } = useSelector(state => state.loadHelplines);
     let data = [];
     data = (helplines !== undefined && helplines.length > 0) ? helplines : []
 

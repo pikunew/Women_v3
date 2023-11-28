@@ -51,7 +51,7 @@ const NotFound = () => {
                 variant="body1"
                 sx={{
                   mt: 2,
-                  display: "block",
+                  
                   color: "#fff",
                   padding: "10px 20px",
                   background: "#DF036A",
