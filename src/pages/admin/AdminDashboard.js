@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import StatComponent from '../../components/StatComponent';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';

@@ -153,7 +153,7 @@ const CreateHelpline = () => {
               <MenuItem value="" disabled>
                 Select an Issue
               </MenuItem>
-              <MenuItem value="Adultary">Adultary"</MenuItem>
+              <MenuItem value="Adultary">Adultary</MenuItem>
               <MenuItem value="Blackmailing">Blackmailing</MenuItem>
               <MenuItem value="Bullying">Bullying</MenuItem>
               <MenuItem value="Career Counselling">Career Counselling</MenuItem>

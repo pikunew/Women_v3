@@ -38,7 +38,7 @@ const NotFound = () => {
 
             <Box sx={{ mt: 2 }}>
               <Typography variant="h3" sx={{ fontSize: 80,fontWeight:400, color: "#DF036A" }}>
-                Look like you're lost
+                Look like you&apos;re lost
               </Typography>
 
               <Typography variant="body1" sx={{ color: "text.secondary" }}>

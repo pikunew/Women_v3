@@ -1,11 +1,10 @@
 import { Box } from '@mui/material';
-import React from 'react'
+import React from 'react';
 import HeaderTop from './HeaderTop';
 import SidebarAdm from './Sidebar';
 
-const Layout = (Component) => ({ ...props }) => {
-
-    return (
+const Layout = (Component) => {
+    const WrappedComponent = (props) => (
         <>
             <div style={{ display: 'flex', minHeight: "100vh" }}>
                 <SidebarAdm />
@@ -17,7 +16,15 @@ const Layout = (Component) => ({ ...props }) => {
                 </Box>
             </div>
         </>
-    )
+    );
+
+    WrappedComponent.displayName = `Layout(${getDisplayName(Component)})`;
+
+    return WrappedComponent;
+};
+
+function getDisplayName(WrappedComponent) {
+    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
-export default Layout
+export default Layout;
