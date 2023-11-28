@@ -25,8 +25,6 @@ import {
   USER_SIGNUP_RESET,
 } from "../constants/userConstant";
 
-
-
 // user signup
 export const userReducerSignUp = (state = {}, action) => {
   switch (action.type) {

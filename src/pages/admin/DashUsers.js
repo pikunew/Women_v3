@@ -1,75 +1,88 @@
-import React, { useEffect } from 'react';
-import { Box, Button, Paper, Typography } from '@mui/material';
-import { DataGrid, gridClasses, GridToolbar } from '@mui/x-data-grid';
-import { Link } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
-import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import { helplineLoadAction } from '../../redux/actions/helplineAction';
+import React, { useEffect } from "react";
+import { Box, Button, Paper, Typography } from "@mui/material";
+import { DataGrid, gridClasses, GridToolbar } from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
+import AddIcon from "@mui/icons-material/Add";
+import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
+import { allUserAction } from "../../redux/actions/userAction";
 
-const DashHelplines = () => {
+const DashUsers = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(helplineLoadAction());
-  }, [dispatch]);
+    dispatch(allUserAction());
+  }, []);
 
-  const { helplines } = useSelector((state) => state.loadHelplines);
+  const { users } = useSelector((state) => state.allUsers);
   let data = [];
-  data = helplines !== undefined && helplines.length > 0 ? helplines : [];
+  data = users !== undefined && users.length > 0 ? users : [];
 
-  const deleteHelplineById = (e, id) => {
+  const deleteUserById = (e, id) => {
     console.log(id);
   };
 
   const columns = [
     {
-      field: '_id',
-      headerName: 'Issue ID',
+      field: "_id",
+      headerName: "User ID",
       width: 150,
       editable: true,
     },
+
     {
-      field: 'issue',
-      headerName: 'Issue',
+      field: "firstName",
+      headerName: "FIrst Name",
       width: 150,
     },
     {
-      field: 'firstName',
-      headerName: 'User',
+      field: "lastName",
+      headerName: "Last Name",
       width: 150,
-      valueGetter: (params) => params.row.user?.firstName,
-    },
-    
-    
-    {
-      field: 'agen',
-      headerName: 'Agency',
-      width: 150,
-      renderCell: (params) => `$${params.row.agen}`,
     },
     {
-      field: 'createdAt',
-      headerName: 'Creation Date',
+      field: "email",
+      headerName: "E-mail",
+      width: 150,
+    },
+
+    {
+      field: "role",
+      headerName: "User status",
+      width: 150,
+      renderCell: (params) =>
+        params.row.role === 1 ? "Admin" : "Employee",
+    },
+
+    {
+      field: "createdAt",
+      headerName: "Creation date",
       width: 250,
       renderCell: (params) =>
-        moment(params.row.createdAt).format('MMMM Do YYYY HH:mm:ss'),
+        moment(params.row.createdAt).format("MMMM Do YYYY HH:MM:SS"),
     },
+
     {
-      field: 'Actions',
+      field: "Actions",
       width: 200,
       renderCell: (values) => (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '170px' }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "170px",
+          }}
+        >
           <Button variant="contained">
             <Link
-              style={{ color: 'white', textDecoration: 'none' }}
-              to={`/admin/edit/helpline/${values.row._id}`}
+              style={{ color: "white", textDecoration: "none" }}
+              to={`/admin/edit/user/${values.row._id}`}
             >
               Edit
             </Link>
           </Button>
           <Button
-            onClick={(e) => deleteHelplineById(e, values.row._id)}
+            onClick={(e) => deleteUserById(e, values.row._id)}
             variant="contained"
             color="error"
           >
@@ -83,33 +96,35 @@ const DashHelplines = () => {
   return (
     <>
       <Box>
-        <Typography variant="h4" sx={{ color: 'white', pb: 3 }}>
-          Helplines List
+        <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
+          All users
         </Typography>
-        <Box sx={{ pb: 2, display: 'flex', justifyContent: 'right' }}>
+        <Box sx={{ pb: 2, display: "flex", justifyContent: "right" }}>
           <Button
             variant="contained"
             color="success"
             startIcon={<AddIcon />}
             component={Link}
-            to="/admin/createhelplines"
+            to="/admin/createusers"
           >
-            Create Helpline
+            Create user
           </Button>
         </Box>
-        <Paper sx={{ bgcolor: 'secondary.midNightBlue' }}>
-          <Box sx={{ height: 800, width: '100%' }}>
+        <Paper sx={{ bgcolor: "secondary.midNightBlue" }}>
+          <Box sx={{ height: 800, width: "100%" }}>
             <DataGrid
               sx={{
-                '& .MuiTablePagination-displayedRows': {
-                  color: 'white',
+                "& .MuiTablePagination-displayedRows": {
+                  color: "white",
                 },
-                color: 'white',
+                color: "white",
                 [`& .${gridClasses.row}`]: {
-                  bgcolor: (theme) => theme.palette.secondary.main,
+                  bgcolor: (theme) =>
+                    // theme.palette.mode === 'light' ? grey[200] : grey[900],
+                    theme.palette.secondary.main,
                 },
                 button: {
-                  color: '#ffffff',
+                  color: "#ffffff",
                 },
               }}
               getRowId={(row) => row._id}
@@ -127,4 +142,4 @@ const DashHelplines = () => {
   );
 };
 
-export default DashHelplines;
+export default DashUsers;
