@@ -20,35 +20,11 @@ import {
 
 
 
-// user signup action
-export const userSignUpAction = (user) => async (dispatch) => {
-    dispatch({ type: USER_SIGNUP_REQUEST });
-  
-    try {
-      const { data } = await axios.post('/api/signup', user);
-  
-      dispatch({
-        type: USER_SIGNUP_SUCCESS,
-        payload: data,
-      });
-  
-      toast.success('Register Successfully!');
-    } catch (error) {
-      dispatch({
-        type: USER_SIGNUP_FAIL,
-        payload: error.response.data.error,
-      });
-  
-      toast.error(error.response.data.error);
-    }
-  };
-
-
-// user signin action
+// Update userSignInAction
 export const userSignInAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST });
     try {
-        const { data } = await axios.post("/api/signin", user);
+        const { data } = await axios.post("https://womenhelpline-backend.onrender.com/api/signin", user);
         localStorage.setItem('userInfo', JSON.stringify(data));
         dispatch({
             type: USER_SIGNIN_SUCCESS,
@@ -64,11 +40,30 @@ export const userSignInAction = (user) => async (dispatch) => {
     }
 }
 
-//log out action
+// Update userSignUpAction
+export const userSignUpAction = (user) => async (dispatch) => {
+    dispatch({ type: USER_SIGNUP_REQUEST });
+    try {
+        const { data } = await axios.post("https://womenhelpline-backend.onrender.com/api/signup", user);
+        dispatch({
+            type: USER_SIGNUP_SUCCESS,
+            payload: data,
+        });
+        toast.success('Register Successfully!');
+    } catch (error) {
+        dispatch({
+            type: USER_SIGNUP_FAIL,
+            payload: error.response.data.error,
+        });
+        toast.error(error.response.data.error);
+    }
+}
+
+// Update userLogoutAction
 export const userLogoutAction = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT_REQUEST });
     try {
-        const { data } = await axios.get("/api/logout");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/logout");
         localStorage.removeItem('userInfo');
         dispatch({
             type: USER_LOGOUT_SUCCESS,
@@ -84,17 +79,15 @@ export const userLogoutAction = () => async (dispatch) => {
     }
 }
 
-
-//user profile action
+// Update userProfileAction
 export const userProfileAction = () => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/me");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/me");
         dispatch({
             type: USER_LOAD_SUCCESS,
             payload: data
         });
-
     } catch (error) {
         dispatch({
             type: USER_LOAD_FAIL,
@@ -103,17 +96,15 @@ export const userProfileAction = () => async (dispatch) => {
     }
 }
 
-
-//all user action
+// Update allUserAction
 export const allUserAction = () => async (dispatch) => {
     dispatch({ type: ALL_USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/allusers");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/allusers");
         dispatch({
             type: ALL_USER_LOAD_SUCCESS,
             payload: data
         });
-
     } catch (error) {
         dispatch({
             type: ALL_USER_LOAD_FAIL,
@@ -122,17 +113,15 @@ export const allUserAction = () => async (dispatch) => {
     }
 }
 
-
-//create user action
-export const creatUserAction = () => async (dispatch) => {
+// Update createUserAction
+export const createUserAction = () => async (dispatch) => {
     dispatch({ type: ALL_USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/allusers");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/allusers");
         dispatch({
             type: ALL_USER_LOAD_SUCCESS,
             payload: data
         });
-
     } catch (error) {
         dispatch({
             type: ALL_USER_LOAD_FAIL,
