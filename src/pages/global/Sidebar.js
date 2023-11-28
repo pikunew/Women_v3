@@ -35,7 +35,7 @@ const SidebarAdm = () => {
 
   useEffect(() => {
     dispatch(userProfileAction());
-  }, []);
+  }, [dispatch]);
 
   //log out
   const logOut = () => {
