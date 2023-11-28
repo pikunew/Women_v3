@@ -83,18 +83,33 @@ export const userLogoutAction = () => async (dispatch) => {
 export const userProfileAction = () => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/me");
-        dispatch({
-            type: USER_LOAD_SUCCESS,
-            payload: data
+      const token = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')).token : null;
+  
+      if (token) {
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/me", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         });
+  
+        dispatch({
+          type: USER_LOAD_SUCCESS,
+          payload: data
+        });
+      } else {
+        // Handle the case when the token is not available or expired
+        dispatch({
+          type: USER_LOAD_FAIL,
+          payload: "User not authenticated"
+        });
+      }
     } catch (error) {
-        dispatch({
-            type: USER_LOAD_FAIL,
-            payload: error.response.data.error
-        });
+      dispatch({
+        type: USER_LOAD_FAIL,
+        payload: error.response.data.error
+      });
     }
-}
+  };
 
 // Update allUserAction
 export const allUserAction = () => async (dispatch) => {
@@ -129,5 +144,10 @@ export const createUserAction = () => async (dispatch) => {
         });
     }
 }
+
+
+
+
+
 
 
