@@ -31,9 +31,9 @@ const DashHelplines = () => {
     const columns = [
 
         {
-            field: '_id',
-            headerName: 'Issue ID',
-            width: 150,
+            field: 'uid',
+            headerName: 'UID',
+            width: 80,
             editable: true,
         },
         {
@@ -43,30 +43,39 @@ const DashHelplines = () => {
         },
       
         {
-            field: 'firstName',
-            headerName: 'User',
+            field: "user",
+            headerName: "User",
             width: 150,
-            valueGetter: (data) => data.row.user.firstName
-        },
-        {
-            field: 'available',
-            headerName: 'available',
-            width: 150,
-            renderCell: (values => (
-                values.row.available ? "Yes" : "No"
-            ))
+          },
 
+        {
+            field: 'stt',
+            headerName: 'Verification',
+            width: 100,
+           
         },
 
         {
-            field: 'salary',
+            field: 'agen',
             headerName: 'Agency',
             type: Number,
-            width: 150,
-            renderCell: (values => (
-                "$" + values.row.salary
-            ))
+            width: 300,
+           
+        },
 
+        {
+            field: 'num',
+            headerName: 'Numbers',
+            type: Number,
+            width: 150,
+           
+        },
+        {
+            field: 'map',
+            headerName: 'Location',
+            type: Number,
+            width: 200,
+           
         },
 
         {
