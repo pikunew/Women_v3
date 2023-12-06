@@ -20,10 +20,12 @@ const validationSchema = yup.object({
   uid: yup.string("Enter the UID").required("UID is required"),
   agen: yup.string("Enter the agency").required("Agency is required"),
   issue: yup.string("Select the issue").required("Issue is required"),
-  issueType: yup.string("Enter the issue type").required("Issue Type is required"), // Added issueType validation
+
   map: yup.string("Enter the Location").required("Location is required"),
   num: yup.string("Enter the number").required("Number is required"),
-  sup: yup.string("Enter the support type").required("Support Type is required"),
+  sup: yup
+    .string("Enter the support type")
+    .required("Support Type is required"),
   des: yup.string("Enter the description").required("Description is required"),
   lan: yup.string("Enter the language").required("Language is required"),
 });
@@ -38,7 +40,7 @@ const CreateHelpline = () => {
       uid: "",
       agen: "",
       issue: "",
-      issueType: "", // Added issueType
+
       map: "",
       num: "",
       sup: "",
@@ -51,11 +53,10 @@ const CreateHelpline = () => {
     },
   });
 
-  
   return (
     <Box m="20px">
       <Typography variant="h4" sx={{ color: "white", pb: 3 }}>
-        Create Users
+        Create Helpline
       </Typography>
       <form onSubmit={formik.handleSubmit}>
         <Box
@@ -78,20 +79,6 @@ const CreateHelpline = () => {
             error={!!formik.touched.uid && !!formik.errors.uid}
             helperText={formik.touched.uid && formik.errors.uid}
             sx={{ gridColumn: "span 1", backgroundColor: "white" }}
-          />
-
-          <TextField
-            fullWidth
-            variant="filled"
-            type="text"
-            label="Issue Type"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.issueType}
-            name="issueType"
-            error={!!formik.touched.issueType && !!formik.errors.issueType}
-            helperText={formik.touched.issueType && formik.errors.issueType}
-            sx={{ gridColumn: "span 2", backgroundColor: "white" }}
           />
 
           <TextField
@@ -189,19 +176,67 @@ const CreateHelpline = () => {
             sx={{ gridColumn: "span 2", backgroundColor: "white" }}
           />
 
-          <TextField
+          <FormControl
             fullWidth
             variant="filled"
-            type="text"
-            label="Location"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.map}
-            name="map"
-            error={!!formik.touched.map && !!formik.errors.map}
-            helperText={formik.touched.map && formik.errors.map}
-            sx={{ gridColumn: "span 2", backgroundColor: "white" }}
-          />
+            sx={{ gridColumn: "span 1", backgroundColor: "white" }}
+          >
+            <InputLabel id="issue-label">Location</InputLabel>
+            <Select
+              labelId="Language"
+              id="lan"
+              name="lan"
+              value={formik.values.map}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={!!formik.touched.map && !!formik.errors.map}
+            >
+              <MenuItem value="" disabled>
+                Select a location
+              </MenuItem>
+              <MenuItem value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </MenuItem>
+              <MenuItem value="Andra Pradesh">Andra Pradesh</MenuItem>
+              <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
+              <MenuItem value="Assam">Assam</MenuItem>
+              <MenuItem value="Bihar">Bihar</MenuItem>
+              <MenuItem value="Chandigarh">Chandigarh</MenuItem>
+              <MenuItem value="Chattisgarh">Chattisgarh</MenuItem>
+              <MenuItem value="Daman and Diu">Daman and Diu</MenuItem>
+              <MenuItem value="Delhi">Delhi</MenuItem>
+              <MenuItem value="Rape">Goa</MenuItem>
+              <MenuItem value="Gujarat">Gujarat</MenuItem>
+              <MenuItem value="Haryana">Haryana</MenuItem>
+              <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
+              <MenuItem value="Jammu & Khasmir">Jammu & Khasmir</MenuItem>
+              <MenuItem value="Karnataka">Karnataka</MenuItem>
+              <MenuItem value="Kerela">Kerela</MenuItem>
+              <MenuItem value="Lakshadweep">Lakshadweep</MenuItem>
+              <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+              <MenuItem value="Maharashtra">Maharashtra</MenuItem>
+              <MenuItem value="Manipur">Manipur</MenuItem>
+              <MenuItem value="Mizoram">Mizoram</MenuItem>
+              <MenuItem value="Nagaland">Nagaland</MenuItem>
+              <MenuItem value="Odisha">Odisha</MenuItem>
+              <MenuItem value="Puducherry">Puducherry</MenuItem>
+              <MenuItem value="Punjab">Punjab</MenuItem>
+              <MenuItem value="Rajasthan">Rajasthan</MenuItem>
+              <MenuItem value="Sikkim">Sikkim</MenuItem>
+              <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
+              <MenuItem value="Telengana">Telengana</MenuItem>
+              <MenuItem value="Tripura">Tripura</MenuItem>
+              <MenuItem value="Uttrakhand">Uttrakhand</MenuItem>
+              <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
+              <MenuItem value="West Bengal">West Bengal</MenuItem>
+            </Select>
+            {formik.touched.map && formik.errors.map && (
+              <Typography variant="caption" color="error">
+                {formik.errors.map}
+              </Typography>
+            )}
+          </FormControl>
+
           <TextField
             fullWidth
             variant="filled"
@@ -215,7 +250,33 @@ const CreateHelpline = () => {
             helperText={formik.touched.lan && formik.errors.lan}
             sx={{ gridColumn: "span 2", backgroundColor: "white" }}
           />
-
+          <FormControl
+            fullWidth
+            variant="filled"
+            sx={{ gridColumn: "span 1", backgroundColor: "white" }}
+          >
+            <InputLabel id="status-label">Support Type</InputLabel>
+            <Select
+              labelId="status-label"
+              id="sup"
+              name="sup"
+              value={formik.values.sup}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={!!formik.touched.sup && !!formik.errors.sup} 
+            >
+              <MenuItem value="" disabled>
+                Support type
+              </MenuItem>
+              <MenuItem value="Remote">Remote</MenuItem>
+              <MenuItem value="Physical">Physical</MenuItem>
+            </Select>
+            {formik.touched.stt && formik.errors.stt && (
+              <Typography variant="caption" color="error">
+                {formik.errors.stt}
+              </Typography>
+            )}
+          </FormControl>
           <TextField
             fullWidth
             multiline
