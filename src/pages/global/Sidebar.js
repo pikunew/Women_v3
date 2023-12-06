@@ -147,14 +147,14 @@ const SidebarAdm = () => {
                     MANAGE HELPLINE
                   </Typography>
                   <MenuItem
-                    component={<Link to="https://womenhelpline-backend.onrender.com/admin/createhelplines" />}
+                    component={<Link to="/admin/createhelplines" />}
                     icon={<ContactsOutlinedIcon />}
                   >
                     {" "}
                     Create Helplines{" "}
                   </MenuItem>
                   <MenuItem
-                    component={<Link to="https://womenhelpline-backend.onrender.com/admin/helplines" />}
+                    component={<Link to="/admin/helplines" />}
                     icon={<ContactsOutlinedIcon />}
                   >
                     {" "}

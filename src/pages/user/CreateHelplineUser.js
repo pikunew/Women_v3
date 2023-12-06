@@ -20,7 +20,6 @@ const validationSchema = yup.object({
   uid: yup.string("Enter the UID").required("UID is required"),
   agen: yup.string("Enter the agency").required("Agency is required"),
   issue: yup.string("Select the issue").required("Issue is required"),
-  issueType: yup.string("Enter the issue type").required("Issue Type is required"), // Added issueType validation
   map: yup.string("Enter the Location").required("Location is required"),
   num: yup.string("Enter the number").required("Number is required"),
   sup: yup.string("Enter the support type").required("Support Type is required"),
@@ -38,7 +37,7 @@ const CreateHelplineUser = () => {
       uid: "",
       agen: "",
       issue: "",
-      issueType: "", // Added issueType
+      
       map: "",
       num: "",
       sup: "",
@@ -80,19 +79,6 @@ const CreateHelplineUser = () => {
             sx={{ gridColumn: "span 1", backgroundColor: "white" }}
           />
 
-          <TextField
-            fullWidth
-            variant="filled"
-            type="text"
-            label="Issue Type"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.issueType}
-            name="issueType"
-            error={!!formik.touched.issueType && !!formik.errors.issueType}
-            helperText={formik.touched.issueType && formik.errors.issueType}
-            sx={{ gridColumn: "span 2", backgroundColor: "white" }}
-          />
 
           <TextField
             fullWidth
