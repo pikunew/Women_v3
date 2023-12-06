@@ -28,6 +28,7 @@ import Search from "./pages/Search";
 import TermsOfUse from "./pages/Termsofuse";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiesPolicy";
+import AdminInfoDashboard from "pages/admin/AdminInfoDashboard";
 
 //HOC
 const UserDashboardHOC = Layout(UserDashboard);
@@ -35,6 +36,7 @@ const UserCreateHelplineUserHOC = Layout(CreateHelplineUser);
 const UserDashHelplinesUserHOC = Layout(DashHelplinesUser);
 const UserInfoDashboardHOC = Layout(UserInfoDashboard);
 const AdminDashboardHOC = Layout(AdminDashboard);
+const AdminInfoDashboardHOC = Layout(AdminInfoDashboard);
 const DashUsersHOC = Layout(DashUsers);
 const DashHelplinesHOC = Layout(DashHelplines);
 const CreateUserHoc = Layout(CreateUser);
@@ -100,6 +102,15 @@ const App = () => {
                   </AdminRoute>
                 }
               />
+              <Route
+                path="/admin/info"
+                element={
+                  <AdminRoute>
+                    <AdminInfoDashboardHOC />
+                  </AdminRoute>
+                }
+              />
+              
               <Route
                 path="/user/dashboard"
                 element={

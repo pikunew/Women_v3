@@ -10,7 +10,7 @@ import {
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import { Box, useTheme } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import Person3Icon from "@mui/icons-material/Person3";
+// import Person3Icon from "@mui/icons-material/Person3";
 import Avatar from "@mui/material/Avatar";
 import logoDashboard from "../../assets/images/favicon.png";
 import { Link } from "react-router-dom";
@@ -160,6 +160,14 @@ const SidebarAdm = () => {
                     {" "}
                     Edit Helplines{" "}
                   </MenuItem>
+                  {/* <MenuItem
+                    component={<Link to="/admin/info" />}
+                    icon={<Person3Icon />}
+                  >
+                    {" "}
+                    Personal Info{" "}
+                  </MenuItem> */}
+
                 </>
               ) : (
                 <>
@@ -185,13 +193,13 @@ const SidebarAdm = () => {
                     Edit Helplines{" "}
                   </MenuItem>
 
-                  <MenuItem
+                  {/* <MenuItem
                     component={<Link to="/user/info" />}
                     icon={<Person3Icon />}
                   >
                     {" "}
                     Personal Info{" "}
-                  </MenuItem>
+                  </MenuItem> */}
                 </>
               )}
             </Menu>
