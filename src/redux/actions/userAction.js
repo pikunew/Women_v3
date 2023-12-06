@@ -48,7 +48,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
 export const userSignInAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST });
     try {
-        const { data } = await axios.post("/api/signin", user);
+        const { data } = await axios.post("https://womenhelpline-backend.onrender.com/api/signin", user);
         localStorage.setItem('userInfo', JSON.stringify(data));
         dispatch({
             type: USER_SIGNIN_SUCCESS,
@@ -68,7 +68,7 @@ export const userSignInAction = (user) => async (dispatch) => {
 export const userLogoutAction = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT_REQUEST });
     try {
-        const { data } = await axios.get("/api/logout");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/logout");
         localStorage.removeItem('userInfo');
         dispatch({
             type: USER_LOGOUT_SUCCESS,
@@ -89,7 +89,7 @@ export const userLogoutAction = () => async (dispatch) => {
 export const userProfileAction = () => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/me");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/me");
         dispatch({
             type: USER_LOAD_SUCCESS,
             payload: data
@@ -108,7 +108,7 @@ export const userProfileAction = () => async (dispatch) => {
 export const allUserAction = () => async (dispatch) => {
     dispatch({ type: ALL_USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/allusers");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/allusers");
         dispatch({
             type: ALL_USER_LOAD_SUCCESS,
             payload: data
@@ -127,7 +127,7 @@ export const allUserAction = () => async (dispatch) => {
 export const creatUserAction = () => async (dispatch) => {
     dispatch({ type: ALL_USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/allusers");
+        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/signup");
         dispatch({
             type: ALL_USER_LOAD_SUCCESS,
             payload: data
