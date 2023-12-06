@@ -9,7 +9,6 @@ import {
 
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import { Box, useTheme } from "@mui/material";
-import CategoryIcon from "@mui/icons-material/Category";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import Person3Icon from "@mui/icons-material/Person3";
 import Avatar from "@mui/material/Avatar";
@@ -40,10 +39,8 @@ const SidebarAdm = () => {
   //log out
   const logOut = () => {
     dispatch(userLogoutAction());
-    navigate("/");
+    navigate("/login");
   };
-  
-  
 
   return (
     <>
@@ -112,10 +109,17 @@ const SidebarAdm = () => {
                   </MenuItem>
                   <Typography
                     variant="h6"
-                    sx={{ m: "15px 0 5px 20px" }}
+                    sx={{
+                      m: "15px 0 5px 20px",
+                      color: "white",
+                      textDecoration: "underline",
+                      fontWeight: "bold",
+                      textTransform: "capitalize",
+                    }}
                   >
-                    Manage Team
+                    MANAGE TEAM
                   </Typography>
+
                   <MenuItem
                     component={<Link to="/admin/users" />}
                     icon={<PeopleOutlinedIcon />}
@@ -132,9 +136,15 @@ const SidebarAdm = () => {
                   </MenuItem>
                   <Typography
                     variant="h6"
-                    sx={{ m: "15px 0 5px 20px" }}
+                    sx={{
+                      m: "15px 0 5px 20px",
+                      color: "white",
+                      textDecoration: "underline",
+                      fontWeight: "bold",
+                      textTransform: "capitalize",
+                    }}
                   >
-                    Manage Helplines
+                    MANAGE HELPLINE
                   </Typography>
                   <MenuItem
                     component={<Link to="/admin/createhelplines" />}
@@ -148,17 +158,9 @@ const SidebarAdm = () => {
                     icon={<ContactsOutlinedIcon />}
                   >
                     {" "}
-                   Edit Helplines{" "}
-                  </MenuItem>
-                  <MenuItem
-                    component={<Link to="/admin/category" />}
-                    icon={<CategoryIcon />}
-                  >
-                    {" "}
-                    Category{" "}
+                    Edit Helplines{" "}
                   </MenuItem>
                 </>
-                 
               ) : (
                 <>
                   <MenuItem
@@ -182,7 +184,7 @@ const SidebarAdm = () => {
                     {" "}
                     Edit Helplines{" "}
                   </MenuItem>
-                  
+
                   <MenuItem
                     component={<Link to="/user/info" />}
                     icon={<Person3Icon />}
