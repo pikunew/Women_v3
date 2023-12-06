@@ -39,10 +39,10 @@ export const createHelplineAction = (user) => async (dispatch) => {
 
 
 // search 
-export const helplineLoadAction = (pageNumber, keyword = '', cat = '', location = '') => async (dispatch) => {
+export const helplineLoadAction = () => async (dispatch) => {
     dispatch({ type: HELPLINE_LOAD_REQUEST });
     try {
-        const { data } = await axios.get(`/api/helplines/show/?pageNumber=${pageNumber}&keyword=${keyword}&cat=${cat}&location=${location}`)
+        const { data } = await axios.get(`https://womenhelpline-backend.onrender.com/api/helplines/show/?`)
         dispatch({
             type: HELPLINE_LOAD_SUCCESS,
             payload: data
@@ -61,7 +61,7 @@ export const helplineLoadAction = (pageNumber, keyword = '', cat = '', location 
 export const helplineLoadSingleAction = (id) => async (dispatch) => {
     dispatch({ type: HELPLINE_LOAD_SINGLE_REQUEST });
     try {
-        const { data } = await axios.get(`/api/helpline/${id}`);
+        const { data } = await axios.get(`https://womenhelpline-backend.onrender.com/api/helpline/${id}`);
         dispatch({
             type: HELPLINE_LOAD_SINGLE_SUCCESS,
             payload: data
