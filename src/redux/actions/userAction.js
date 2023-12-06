@@ -25,7 +25,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNUP_REQUEST });
   
     try {
-      const { data } = await axios.post('/api/signup', user);
+      const { data } = await axios.post('https://womenhelpline-backend.onrender.com/api/signup', user);
   
       dispatch({
         type: USER_SIGNUP_SUCCESS,

@@ -69,7 +69,7 @@ const DashHelplines = () => {
       renderCell: (values) => (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '170px' }}>
           <Button variant="contained">
-            <Link style={{ color: 'white', textDecoration: 'none' }} to={`/admin/edit/helpline/${values.row._id}`}>
+            <Link style={{ color: 'white', textDecoration: 'none' }} to={`https://womenhelpline-backend.onrender.com/admin/edit/helpline/${values.row._id}`}>
               Edit
             </Link>
           </Button>
@@ -88,7 +88,7 @@ const DashHelplines = () => {
       </Typography>
       <Box sx={{ pb: 2, display: 'flex', justifyContent: 'right' }}>
         <Button variant="contained" color="success" startIcon={<AddIcon />}>
-          <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin/createhelplines">
+          <Link style={{ color: 'white', textDecoration: 'none' }} to="https://womenhelpline-backend.onrender.com/admin/createhelplines">
             Create Helpline
           </Link>
         </Button>
