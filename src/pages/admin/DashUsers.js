@@ -27,7 +27,7 @@ const DashUsers = () => {
     {
       field: "_id",
       headerName: "User ID",
-      width: 150,
+      width: 250,
       editable: true,
     },
 

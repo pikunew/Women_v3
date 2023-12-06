@@ -25,7 +25,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNUP_REQUEST });
   
     try {
-      const { data } = await axios.post('https://womenhelpline-backend.onrender.com/api/signup', user);
+      const { data } = await axios.post('/api/signup', user);
   
       dispatch({
         type: USER_SIGNUP_SUCCESS,
@@ -48,7 +48,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
 export const userSignInAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST });
     try {
-        const { data } = await axios.post("https://womenhelpline-backend.onrender.com/api/signin", user);
+        const { data } = await axios.post("/api/signin", user);
         localStorage.setItem('userInfo', JSON.stringify(data));
         dispatch({
             type: USER_SIGNIN_SUCCESS,
@@ -89,7 +89,7 @@ export const userLogoutAction = () => async (dispatch) => {
 export const userProfileAction = () => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("https://womenhelpline-backend.onrender.com/api/me");
+        const { data } = await axios.get("/api/me");
         dispatch({
             type: USER_LOAD_SUCCESS,
             payload: data
